@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<center><h3><strong>REGISTRO CONTROL DE SALUD</strong> </h3></center> 
+			<center><h3><strong>REGISTRO</strong> </h3></center> 
 			<hr style="width:100%; border-color: blue;">
 			@include('messages')
 			<div class="panel panel-default">

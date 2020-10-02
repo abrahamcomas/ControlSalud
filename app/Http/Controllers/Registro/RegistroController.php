@@ -39,27 +39,39 @@ class RegistroController extends Controller
         $Email = $request->input('Email');
         $Activo = 0;
      
-        $Funcionario=FuncionarioModel::select('Rut')->whereRut($Rut)->first();
+        $Funcionario=FuncionarioModel::select('Rut','Nombres')->whereRut($Rut)->first();
         
-        if(isset($Funcionario->Rut)) 
+        if((isset($Funcionario->Rut)) AND (!isset($Funcionario->Nombres))) 
         {
-            $id=FuncionarioModel::Select('Id_Funcionario','Activo')->whereRut($Rut)->first();
+            $ExisteEmail=DB::table('Funcionario')->whereEmail($Email)->exists();
+            if ($ExisteEmail==0) 
+            {
+                $id=FuncionarioModel::Select('Id_Funcionario','Activo')->whereRut($Rut)->first();
 
-            if ($id->Activo==1) {
-                     
-                $user = FuncionarioModel::find($id->Id_Funcionario);
-                $user->Nombres = $Nombres;
-                $user->Apellidos = $Email;
-                $user->Email = $Email;
-                $user->password = Hash::make($Contrasenia);
-                $user->save();
+                if ($id->Activo==1) {
+                         
+                    $user = FuncionarioModel::find($id->Id_Funcionario);
+                    $user->Nombres = $Nombres;
+                    $user->Apellidos = $Email;
+                    $user->Email = $Email;
+                    $user->password = Hash::make($Contrasenia);
+                    $user->save();
 
-                $resultado='Registro Realizado Correctamente.';
+                    $resultado='Registro Realizado Correctamente.';
+                }
+                else
+                {
+                    $resultado='Error, Usuario con cuenta desactiva, registro denegado.';
+                }
             }
             else
             {
-                $resultado='Error, Usuario con cuenta desactiva, registro denegado.';
+                $resultado='Error, Email registrado anteriormenete, registro denegado.';
             }
+        }
+        elseif((isset($Funcionario->Rut)) AND (isset($Funcionario->Nombres)))
+        {
+            $resultado='Error, Usuario registrado anteriormente.';
         }
         else
         {
