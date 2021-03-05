@@ -20,7 +20,7 @@ class LoginController extends Controller
 
         $messages = [
             'RUN.required' =>'El campo Rut es obligatorio.',
-            'password.required' =>'El campo Contraseña es obligatorio.'
+            'password.required' =>'El campo Contraseña es obligatorio.' 
         ];
 
         $this->validate($request, $rules, $messages);

@@ -52,7 +52,7 @@ class RegistroController extends Controller
                          
                     $user = FuncionarioModel::find($id->Id_Funcionario);
                     $user->Nombres = $Nombres;
-                    $user->Apellidos = $Email;
+                    $user->Apellidos = $Apellidos;
                     $user->Email = $Email;
                     $user->password = Hash::make($Contrasenia);
                     $user->save();

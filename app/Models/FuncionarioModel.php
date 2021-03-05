@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class FuncionarioModel extends Model
 {
+    use HasFactory;
+
     //referencia a una tabla
     protected $table="Funcionario";
     protected $primaryKey="id_Funcionario";
