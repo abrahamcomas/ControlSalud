@@ -125,7 +125,7 @@ class IngresoFluor extends Component
         $this->M_Detalles='0';
     }
 
-    public $id_vacunasEditar;
+    public $id_FluorEditar;
     public $NombresFluorEditar;
 
     public $ED_Estado;
@@ -133,22 +133,14 @@ class IngresoFluor extends Component
     public $ED_Observacion; 
     
     //EditarVacuna EditarResultado
-    public $id_AlumF;
     public $id_Fluor_T;
     
-    public function EditarFluor($id_Fluor_T){
-        $this->id_vacunasEditar=$id_Fluor_T;
+    public function EditarFluor($id_AlumF){
+        $this->id_FluorEditar=$id_AlumF;
         $this->IngresoDatos='2';
         $this->M_Detalles='2';
 
-        $ID =  DB::table('AlumFluor')->select('id_AlumF') 
-            ->where('id_Fluor_T', '=', $id_Fluor_T)->get();
-        
-        foreach ( $ID as $user){
-            $this->id_AlumF = $user->id_AlumF;
-        } 
-
-        $AlumnoFluor =AlumnoFluor::find($this->id_AlumF);
+        $AlumnoFluor =AlumnoFluor::find($id_AlumF);
         $this->id_Fluor_T          = $AlumnoFluor->id_Fluor_T; 
         $this->ED_Estado          = $AlumnoFluor->Aceptada;
         $this->ED_FechaFluor        = $AlumnoFluor->Fecha;
@@ -173,7 +165,7 @@ class IngresoFluor extends Component
         $this->IngresoDatos='0';
         $this->M_Detalles='0';   
 
-        $AlumVacunas =AlumnoFluor::find($this->id_AlumF); 
+        $AlumVacunas =AlumnoFluor::find($this->id_FluorEditar); 
         $AlumVacunas->id_Fluor_T=$this->id_Fluor_T;
         $AlumVacunas->Aceptada= $this->ED_Estado;
         $AlumVacunas->Fecha=$this->ED_FechaFluor;

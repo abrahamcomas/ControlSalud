@@ -87,7 +87,31 @@
         </center>
         <hr> 
         <div class="form-group">
-          <center>
+          <center> 
+            <ul class="list-gruop">
+              <li class="list-group-item active"><center>NOMBRE</center></li>
+              <li class="list-group-item"><center>{{ $Nombres }} {{ $Apellidos }}</center></li>
+              <li class="list-group-item active"><center>RUT</center></li>
+              <li class="list-group-item"><center>{{ $Rut }}</center></li>
+              <li class="list-group-item active"><center>DIRECCIÓN</center></li>
+              <li class="list-group-item"><center>{{ $Direccion }}</center></li>
+              <li class="list-group-item active"><center>TELÉFONO ALUMNO</center></li>
+              <li class="list-group-item"><center>{{ $Telefono }}</center></li>
+              <li class="list-group-item active"><center>FECHA NACIMIENTO</center></li>
+              <li class="list-group-item"><center>{{ $FechaNac }}</center></li>
+              <li class="list-group-item active"><center>APODERADA</center></li>
+              <li class="list-group-item"><center>{{ $Mama }}</center></li>
+              <li class="list-group-item active"><center>TELÉFONO APODERADA</center></li>
+              <li class="list-group-item"><center>{{ $NumeroMama }}</center></li>
+              <li class="list-group-item active"><center>APODERADO</center></li>
+              <li class="list-group-item"><center>{{ $Papa }}</center></li>
+              <li class="list-group-item active"><center>TELÉFONO APODERADO</center></li>
+              <li class="list-group-item"><center>{{ $NumeroPapa }}</center></li>
+              <li class="list-group-item active"><center>OBSERVACION</center></li>
+              <textarea class="md-textarea form-control" wire:model="Observacion" rows="2" disabled></textarea>
+            </ul>
+          </center>
+          {{-- <center> 
             <strong>
               <h6>NOMBRE: {{ $Nombres }} {{ $Apellidos }}</h6>
               <h6>RUT: {{ $Rut }}</h6>
@@ -101,7 +125,7 @@
               <h6>OBSERVACION:</h6>
               <textarea class="md-textarea form-control" wire:model="Observacion" rows="2" disabled></textarea>
             </strong>
-          </center>
+          </center> --}}
         </div> 
         <hr>
         <center>  
@@ -152,7 +176,7 @@
                 @endif 
                     <td>
                       <center>{{ $row->Nombre_V }}</center>
-                    </td>
+                    </td> 
                     <td>
                       <center>{{ $row->Fecha }}</center>
                     </td> 
@@ -163,7 +187,7 @@
                     <td> 
                       <center>
                         <button type="button" class="btn btn-success active" 
-                          wire:click="EditarVacuna({{ $row->id_vacunas_T }})">
+                          wire:click="EditarVacuna({{ $row->id_AlumV }})">
                           Editar
                         </button>
                       </center>  

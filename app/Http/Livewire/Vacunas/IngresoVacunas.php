@@ -133,22 +133,14 @@ class IngresoVacunas extends Component
     public $ED_Observacion; 
     
     //EditarVacuna EditarResultado
-    public $id_AlumV;
     public $id_vacunas_T;
     
-    public function EditarVacuna($id_vacunas_T){
-        $this->id_vacunasEditar=$id_vacunas_T;
+    public function EditarVacuna($id_AlumV){
+        $this->id_vacunasEditar=$id_AlumV;
         $this->IngresoDatos='2';
         $this->M_Detalles='2';
 
-        $ID =  DB::table('AlumVacunas')->select('id_AlumV') 
-            ->where('id_vacunas_T', '=', $id_vacunas_T)->get();
-        
-        foreach ( $ID as $user){
-            $this->id_AlumV = $user->id_AlumV;
-        } 
-
-        $AlumVacunas =AlumVacunas::find($this->id_AlumV);
+        $AlumVacunas =AlumVacunas::find($id_AlumV);
         $this->id_vacunas_T          = $AlumVacunas->id_vacunas_T; 
         $this->ED_Estado          = $AlumVacunas->Aceptada;
         $this->ED_FechaVacunacion = $AlumVacunas->Fecha;
@@ -173,7 +165,7 @@ class IngresoVacunas extends Component
         $this->IngresoDatos='0';
         $this->M_Detalles='0';   
 
-        $AlumVacunas =AlumVacunas::find($this->id_AlumV); 
+        $AlumVacunas =AlumVacunas::find($this->id_vacunasEditar); 
         $AlumVacunas->id_vacunas_T=$this->id_vacunas_T;
         $AlumVacunas->Aceptada= $this->ED_Estado;
         $AlumVacunas->Fecha=$this->ED_FechaVacunacion;

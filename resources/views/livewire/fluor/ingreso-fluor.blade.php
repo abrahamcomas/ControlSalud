@@ -161,9 +161,9 @@
                     </td> 
                 @if($row->Aceptada==1 || $row->Aceptada==2 || $row->Aceptada==3)
                     <td> 
-                      <center>
+                      <center> 
                         <button type="button" class="btn btn-success active" 
-                          wire:click="EditarFluor({{ $row->id_Fluor_T }})">
+                          wire:click="EditarFluor({{ $row->id_AlumF }})">
                           Editar
                         </button>
                       </center>  

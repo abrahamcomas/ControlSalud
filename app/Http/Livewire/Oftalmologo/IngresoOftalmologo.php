@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; 
 use App\Models\Alumno; 
-use App\Models\intermediaEscuela; 
+use App\Models\intermediaEscuela;  
 use App\Models\InterCursoAlum; 
 use App\Models\Oftalmologo; 
 use App\Models\AlumOftalmologo; 
@@ -134,22 +134,14 @@ class IngresoOftalmologo extends Component
     public $ED_Observacion; 
     
     //EditarVacuna EditarResultado
-    public $id_AlumO;
     public $id_Oftalmologo_T;
     
-    public function EditarOftalmologo($id_Oftalmologo_T){
-        $this->id_OftalmologoEditar=$id_Oftalmologo_T;
+    public function EditarOftalmologo($id_AlumO){
+        $this->id_OftalmologoEditar=$id_AlumO;
         $this->IngresoDatos='2'; 
         $this->M_Detalles='2';
-
-        $ID =  DB::table('AlumOftalmologo')->select('id_AlumO') 
-            ->where('id_Oftalmologo_T', '=', $id_Oftalmologo_T)->get();
-        
-        foreach ( $ID as $user){
-            $this->id_AlumO = $user->id_AlumO;
-        } 
  
-        $AlumOftalmologo =AlumOftalmologo::find($this->id_AlumO);
+        $AlumOftalmologo =AlumOftalmologo::find($id_AlumO);
         $this->id_Oftalmologo_T         = $AlumOftalmologo->id_Oftalmologo_T; 
         $this->ED_Estado                = $AlumOftalmologo->Aceptada;
         $this->ED_FechaVacunacion       = $AlumOftalmologo->Fecha;
@@ -174,7 +166,7 @@ class IngresoOftalmologo extends Component
         $this->IngresoDatos='0';
         $this->M_Detalles='0';   
 
-        $AlumOftalmologo =AlumOftalmologo::find($this->id_AlumO); 
+        $AlumOftalmologo =AlumOftalmologo::find($this->id_OftalmologoEditar); 
         $AlumOftalmologo->id_Oftalmologo_T=$this->id_Oftalmologo_T;
         $AlumOftalmologo->Aceptada= $this->ED_Estado;
         $AlumOftalmologo->Fecha=$this->ED_FechaVacunacion;

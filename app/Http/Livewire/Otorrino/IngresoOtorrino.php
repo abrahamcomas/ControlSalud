@@ -134,22 +134,14 @@ use WithPagination;
     public $ED_Observacion; 
     
     //EditarVacuna EditarResultado
-    public $id_AlumOt;
     public $id_Otorrino_T;
     
-    public function EditarOtorrino($id_Otorrino_T){
-        $this->id_OtorrinoEditar=$id_Otorrino_T;
+    public function EditarOtorrino($id_AlumOt){
+        $this->id_OtorrinoEditar=$id_AlumOt;
         $this->IngresoDatos='2';
         $this->M_Detalles='2';
 
-        $ID =  DB::table('AlumnoOtorrino')->select('id_AlumOt') 
-            ->where('id_Otorrino_T', '=', $id_Otorrino_T)->get();
-        
-        foreach ( $ID as $user){
-            $this->id_AlumOt = $user->id_AlumOt;
-        } 
-
-        $AlumnoOtorrino =AlumnoOtorrino::find($this->id_AlumOt);
+        $AlumnoOtorrino =AlumnoOtorrino::find($id_AlumOt);
         $this->id_Otorrino_T          = $AlumnoOtorrino->id_Otorrino_T; 
         $this->ED_Estado              = $AlumnoOtorrino->Aceptada;
         $this->ED_FechaOtorrino       = $AlumnoOtorrino->Fecha;
@@ -173,7 +165,7 @@ use WithPagination;
         $this->IngresoDatos='0';
         $this->M_Detalles='0';   
 
-        $AlumnoOtorrino =AlumnoOtorrino::find($this->id_AlumOt); 
+        $AlumnoOtorrino =AlumnoOtorrino::find($this->id_OtorrinoEditar); 
         $AlumnoOtorrino->id_Otorrino_T=$this->id_Otorrino_T;
         $AlumnoOtorrino->Aceptada= $this->ED_Estado;
         $AlumnoOtorrino->Fecha=$this->ED_FechaOtorrino;

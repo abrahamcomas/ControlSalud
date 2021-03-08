@@ -163,7 +163,7 @@
                     <td> 
                       <center>
                         <button type="button" class="btn btn-success active" 
-                          wire:click="EditarOftalmologo({{ $row->id_Oftalmologo_T }})">
+                          wire:click="EditarOftalmologo({{ $row->id_AlumO }})">
                           Editar
                         </button>
                       </center>  

@@ -125,13 +125,13 @@ Route::get('Sistema/AgregarCurso', function () {
 })->middleware('auth')->name('AgregarCursos'); 
 
 //Editar Curso
-Route::get('Sistema/EditarCurso', function () {
+Route::get('Sistema/EditarCurso', function () { 
     return view('Posts/Mantenedores/EditarCursos');
 })->middleware('auth')->name('EditarCursos');  
 
 //Agregar Profesores
 Route::get('Sistema/AgregarProfesores', function () {
-    return view('Posts/Mantenedores/AgregarProfesoresjefes');
+    return view('Posts/Mantenedores/AgregarProfesoresJefes');
 })->middleware('auth')->name('AgregarProfesores'); 
 
 //Editar Profesores

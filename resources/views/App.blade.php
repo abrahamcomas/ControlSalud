@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <title>SALUD</title>
 <head>
+	<meta name="viewport" content="width=device-width"/>
 	<link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet">
 
 
@@ -57,7 +58,7 @@
 		@if (Route::has('Index')) 
 			<div class="top-right link">	 
 				@if(Auth::guard()->check())
-					<a class="navbar-brand" href="#" style="color: white;">
+					<a style="color: white;">
 						<strong>
 							<button class="btn btn-info active" id="menu-toggle">
 								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-border-width" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +126,7 @@
   		@if(Auth::guard()->check())
 	    	<div class="bg-light border-right" id="sidebar-wrapper">
 	      		<div class="sidebar-heading"><center><strong>MENÚ</strong></center></div>
-	      		<hr>
+	      		<hr> 
 	    		<div class="list-group list-group-flush">
 			    	<div class="dropdown">
 				  		<a class="list-group-item list-group-item-action dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>MANTENEDORES</strong>&nbsp;</a>

@@ -163,8 +163,8 @@
                     <td> 
                       <center>
                         <button type="button" class="btn btn-success active" 
-                          wire:click="EditarOtorrino({{ $row->id_Otorrino_T }})">
-                          Editar
+                          wire:click="EditarOtorrino({{ $row->id_AlumOt }})">
+                          Editar{{ $row->id_AlumOt }}
                         </button>
                       </center>  
                     </td>
@@ -176,7 +176,7 @@
         <hr> 
         <center>  
           <h4>
-            <strong>INGRESAR VACUNAS</strong>
+            <strong>INGRESAR OTORRINO</strong>
           </h4>
         </center>
         @include('messages')   
@@ -227,7 +227,7 @@
               </button>
             </center> 
           </div>
-        </div>
+        </div> 
         <hr>
       </div> 
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"></div>
